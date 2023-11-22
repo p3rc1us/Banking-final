@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Kervy Maniego",
+        "id": 1,
+        "accountNumber": 55673782235,
+        "email": "kervymaniego@email.com",
+        "balance": 1000
+    },
+    {
+        "name": "Mark Zuckerberg",
+        "id": 2,
+        "accountNumber": 46782834762,
+        "email": "markZ@email.com",
+        "balance": 3000
+    },
+    {
+        "name": "Tauren Chide",
+        "id": 2,
+        "accountNumber": 53673834762,
+        "email": "taurenwells@email.com",
+        "balance": 22000
+    }
+]

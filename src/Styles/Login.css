@@ -1,0 +1,22 @@
+#root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.mainLogin {
+    height: 100%;
+    width: 100%; 
+}
+
+.welcome, .header2, .header3 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.subLogin {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
