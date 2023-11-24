@@ -5,6 +5,7 @@ import { API_URL } from '../constants/Constants';
 import { useLocation } from 'react-router-dom';
 import '../Styles/Login.css';
 
+
 function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -52,7 +53,7 @@ function Login() {
             });
 
             setTimeout(() => {
-                navigate('/Main');
+                navigate('/main');
             }, 100);
              
         }
@@ -65,17 +66,17 @@ function Login() {
 }
 
 return ( 
-<fieldset className='mainLogin'>
+<div>
     {isLoginPage ? null : (
-    <fieldset className='subLogin'>
+    <div className='subLogin'>
 
-    <fieldset className='welcome'>
-    <span className='header2'>Welcome to your Bank</span>
+    <div className='welcome'>
+    <h1 className='header2'>Welcome to your Bank</h1>
     <br />
-    <span className='header3'>Sign in to start</span>
-    </fieldset>
+    <h3 className='header3'>Sign in to start</h3>
+    </div>
 
-    <form className='App' onSubmit={handleSubmit}>
+    <form className='formLogin' onSubmit={handleSubmit}>
                 <input 
                     className='input' 
                     type="email" 
@@ -92,19 +93,19 @@ return (
                 >
                 </input>
                 <br />
-                <button className="login" type="submit">Sign In With Email</button>
-                <br />
+                <button className="login" type="submit">Sign In</button>
+                <br />        
+    </form>
                 <hr className='hr' />
-                <fieldset className='info'>
-                ✨ We'll email you a magic code for a password-free sign in. Or you can sign in manually instead.
-                </fieldset>
+                <div className='info'>
+                ✨ Your Savings today, will save you tomorrow
+                </div>
                 <span className='footer'>
                 Privacy & Terms{'\u00A0'}{'\u00A0'}Contact Us{'\u00A0'}{'\u00A0'}🌐 Change Region
                 </span>
-    </form>
-    </fieldset>
+    </div>
     )}
-</fieldset>
+</div>
 );
 };
 

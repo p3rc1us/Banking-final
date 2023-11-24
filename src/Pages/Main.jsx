@@ -26,10 +26,11 @@ const [isModalOpen, setIsModalOpen] = useState(false);
           <h3>Balance: ${Number(client.balance).toLocaleString()}</h3>
           <h3>Account Number: {client.accountNumber}</h3>
           <h3>Email: {client.email}</h3>
+          <button className="btnOpen"onClick={openModal}>Deposit</button>
         </fieldset>
       ))}
 
-    <button className="btnOpen"onClick={openModal}>Deposit</button>
+    
     <Logout />
     </div>
 
