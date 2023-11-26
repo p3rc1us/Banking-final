@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-image: url("https://wallpapers.com/images/hd/japan-farm-anime-landscape-yvqut0t4ra7u0j6l.jpg");
 }
 
 .welcome {
@@ -23,7 +24,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .info {
@@ -31,5 +32,4 @@
 }
 
 .footer {
-    margin-top: 20%;
 }

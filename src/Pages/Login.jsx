@@ -68,17 +68,18 @@ function Login() {
 return ( 
 <div>
     {isLoginPage ? null : (
-    <div className='subLogin'>
+    <div className='subLogin overflow-hidden'>
 
     <div className='welcome'>
-    <h1 className='header2'>Welcome to your Bank</h1>
+    <span className='mb-4 text-8xl font-extrabold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] leading-none tracking-wider text-emerald-500'>LandBank</span>
+    <span className='mb-6 text-3xl font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.6)] leading-none tracking-wide text-emerald-500'>Of The Philippines</span>
     <br />
-    <h3 className='header3'>Sign in to start</h3>
+    <h3 className='header3 font-normal'>Sign in to start</h3>
     </div>
 
     <form className='formLogin' onSubmit={handleSubmit}>
                 <input 
-                    className='input' 
+                    className='h-12 min-w-[12rem] rounded-lg border-emerald-500 indent-4 text-emerald-900 shadow-lg focus:outline-none focus:ring focus:ring-emerald-600' 
                     type="email" 
                     onChange={(event) => setEmail(event.target.value)} 
                     placeholder='Email'
@@ -86,21 +87,21 @@ return (
                 </input>
                 <br />
                 <input
-                    className='input'
+                    className='h-12 min-w-[12rem] rounded-lg border-emerald-500 indent-4 text-emerald-900 shadow-lg focus:outline-none focus:ring focus:ring-emerald-600'
                     type="password"
                     onChange={(event) => setPassword(event.target.value)}
                     placeholder='Password'
                 >
                 </input>
                 <br />
-                <button className="login" type="submit">Sign In</button>
+                <button className="h-12 min-w-[8rem] rounded-lg border-2 border-emerald-600 bg-emerald-500 text-emerald-50 shadow-lg hover:bg-emerald-600 focus:outline-none focus:ring focus:ring-emerald-600" type="submit">Sign In</button>
                 <br />        
     </form>
                 <hr className='hr' />
-                <div className='info'>
+                <div className='mb-4 mt-10 text-2xl font-light'>
                 ✨ Your Savings today, will save you tomorrow
                 </div>
-                <span className='footer'>
+                <span className='mt-60 text-xl font-light'>
                 Privacy & Terms{'\u00A0'}{'\u00A0'}Contact Us{'\u00A0'}{'\u00A0'}🌐 Change Region
                 </span>
     </div>
