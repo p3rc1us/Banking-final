@@ -53,7 +53,7 @@ function Login() {
             });
 
             setTimeout(() => {
-                navigate('/main');
+                navigate('/dashboard');
             }, 100);
              
         }

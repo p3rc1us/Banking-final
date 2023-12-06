@@ -1,0 +1,26 @@
+#root {
+    overflow-x: hidden;
+}
+
+.dim {
+    background-color: brown;
+}
+
+.clients {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 75.3vh;
+    overflow-y: auto;
+    margin-top: 50px;
+}
+
+.border {
+    width: 300px;
+    padding: 15px;
+    border: rgb(0, 0, 0) 1px solid;
+    overflow-x: hidden;
+}
+
+
+
