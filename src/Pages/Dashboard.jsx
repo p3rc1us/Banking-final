@@ -47,15 +47,20 @@ function ArrayedClients() {
     e.preventDefault();
 
     let transferSuccess = false;
-          
+    let balanceInsufficient = false;
+
       const updateClients = modifiedClients.map((client) => {
         if (client.accountNumber === Number(senderAccountNumber) &&
-            Number(transferAmount) < client.balance &&
             Number(transferAmount) > 0) 
             {// This is the sender
+              if(Number(transferAmount) > client.balance){
+                balanceInsufficient = true;
+              }
               return { ...client, balance: client.balance - Number(transferAmount) };
             } 
-        else if (client.accountNumber === Number(receiverAccountNumber)) {
+        
+
+        else if (client.accountNumber === Number(receiverAccountNumber) && balanceInsufficient === false) {
                       // This is the receiver
                       transferSuccess = true;
                       return { ...client, balance: client.balance + Number(transferAmount) };
@@ -68,8 +73,7 @@ function ArrayedClients() {
               if (!transferSuccess) {
                 alert("Can't make the transfer. Sender account not found or insufficient balance.");
                 return; // Exit the function if the transfer is not successful
-            }
-          
+            }          
               setModifiedClients(updateClients);
               setTransferAmount('');
               setReceiverAccountNumber('');
