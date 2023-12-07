@@ -43,42 +43,58 @@ function ArrayedClients() {
               closeModal();
             }
             
-  function handleTransfer(e) {
-    e.preventDefault();
-
-    let transferSuccess = false;
-    let balanceInsufficient = false;
-
-      const updateClients = modifiedClients.map((client) => {
-        if (client.accountNumber === Number(senderAccountNumber) &&
-            Number(transferAmount) > 0) 
-            {// This is the sender
-              if(Number(transferAmount) > client.balance){
-                balanceInsufficient = true;
+            function handleTransfer(e) {
+              e.preventDefault();
+          
+              let transferSuccess = false;
+          
+              const sender = modifiedClients.find(client => client.accountNumber === Number(senderAccountNumber));
+              const receiver = modifiedClients.find(client => client.accountNumber === Number(receiverAccountNumber));
+          
+              if (!sender) {
+                  alert("Sender account not found.");
+                  return;
               }
-              return { ...client, balance: client.balance - Number(transferAmount) };
-            } 
-        
-
-        else if (client.accountNumber === Number(receiverAccountNumber) && balanceInsufficient === false) {
-                      // This is the receiver
+          
+              if (Number(transferAmount) <= 0) {
+                  alert("Invalid transfer amount. Please enter a positive amount.");
+                  return;
+              }
+          
+              if (Number(transferAmount) > sender.balance) {
+                  alert("Insufficient balance in the sender's account.");
+                  return;
+              }
+          
+              if (!receiver) {
+                  alert("Receiver account not found.");
+                  return;
+              }
+          
+              // Update sender and receiver balances
+              const updateClients = modifiedClients.map(client => {
+                  if (client.accountNumber === sender.accountNumber) {
+                      return { ...client, balance: client.balance - Number(transferAmount) };
+                  } else if (client.accountNumber === receiver.accountNumber) {
                       transferSuccess = true;
                       return { ...client, balance: client.balance + Number(transferAmount) };
                   } else {
-                      // This is not the sender or receiver
                       return client;
                   }
               });
-
+          
               if (!transferSuccess) {
-                alert("Can't make the transfer. Sender account not found or insufficient balance.");
-                return; // Exit the function if the transfer is not successful
-            }          
+                  alert("Transfer unsuccessful. Please check the details and try again.");
+                  return;
+              }
+          
+              // Update state
               setModifiedClients(updateClients);
-              setTransferAmount('');
-              setReceiverAccountNumber('');
-              setSenderAccountNumber('');
+              // setTransferAmount('');
+              // setReceiverAccountNumber('');
+              // setSenderAccountNumber('');
           }
+          
 
     //       function handleWithdraw(e) {
     // e.preventDefault();
