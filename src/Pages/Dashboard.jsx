@@ -11,11 +11,11 @@ function ArrayedClients() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // for transferring //
-  
+
   const [transferAmount, setTransferAmount ] = useState('');
   const [receiverAccountNumber, setReceiverAccountNumber] = useState('');
   const [senderAccountNumber, setSenderAccountNumber ] = useState('');
-  
+
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -35,43 +35,43 @@ function ArrayedClients() {
                   return client;
                 }
               });
-          
+
               setModifiedClients(updatedClients);
-          
+
               setDeposit(0);
               setAccountNumber('');
               closeModal();
             }
-            
-            function handleTransfer(e) {
-              e.preventDefault();
-          
+
+  function handleTransfer(e) {
+    e.preventDefault();
+
               let transferSuccess = false;
-          
+
               const sender = modifiedClients.find(client => client.accountNumber === Number(senderAccountNumber));
               const receiver = modifiedClients.find(client => client.accountNumber === Number(receiverAccountNumber));
-          
+
               if (!sender) {
                   alert("Sender account not found.");
                   return;
               }
-          
+
               if (Number(transferAmount) <= 0) {
                   alert("Invalid transfer amount. Please enter a positive amount.");
                   return;
               }
-          
+
               if (Number(transferAmount) > sender.balance) {
-                  alert("Insufficient balance in the sender's account.");
+                  alert(`Insufficient balance in the ${sender.name}'s account.`);
                   return;
               }
-          
+
               if (!receiver) {
                   alert("Receiver account not found.");
                   return;
               }
-          
-              // Update sender and receiver balances
+
+
               const updateClients = modifiedClients.map(client => {
                   if (client.accountNumber === sender.accountNumber) {
                       return { ...client, balance: client.balance - Number(transferAmount) };
@@ -82,19 +82,21 @@ function ArrayedClients() {
                       return client;
                   }
               });
-          
+
               if (!transferSuccess) {
                   alert("Transfer unsuccessful. Please check the details and try again.");
                   return;
               }
-          
-              // Update state
+              else {
+                alert(`Transfer successful. $${transferAmount} has been sent to ${receiver.name}.`)
+              }
+
               setModifiedClients(updateClients);
-              // setTransferAmount('');
-              // setReceiverAccountNumber('');
-              // setSenderAccountNumber('');
+              setTransferAmount('');
+              setReceiverAccountNumber('');
+              setSenderAccountNumber('');
           }
-          
+
 
     //       function handleWithdraw(e) {
     // e.preventDefault();
@@ -106,16 +108,16 @@ function ArrayedClients() {
     //               return client;
     //             }
     //           });
-          
+
     //           setModifiedClients(updatedClients);
-          
+
     //           setDeposit(0);
     //           setAccountNumber('');
     //           closeModal();
     //         }
-          
-          
-          
+
+
+
 
 
 
@@ -168,7 +170,7 @@ function ArrayedClients() {
       placeholder='Account Sender'
       onChange={(event) => setSenderAccountNumber(event.target.value)}
       />
-      
+
       <input
       type='number'
       value={transferAmount}
